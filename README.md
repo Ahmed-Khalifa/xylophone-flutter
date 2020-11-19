@@ -16,7 +16,7 @@ We’re going to make a music app that plays Xylophone sounds. For every Beethov
 
 ## But this one looks better.
 
-![My Finished App]()
+![My Finished App](https://github.com/Ahmed-Khalifa/xylophone-flutter/raw/master/GithubImages/Screenshot.png)
 
 ## What you will learn
 
