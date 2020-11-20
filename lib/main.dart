@@ -4,6 +4,24 @@ import 'package:audioplayers/audio_cache.dart';
 void main() => runApp(XylophoneApp());
 
 class XylophoneApp extends StatelessWidget {
+  void playNotes(int noteNumber) {
+    final player = new AudioCache();
+    player.play('note$noteNumber.wav');
+  }
+
+  Widget buildKey(MaterialColor buttonColor,int noteNumber) {
+    return Expanded(
+      child: Padding(
+        padding: const EdgeInsets.all(5.0),
+        child: RaisedButton(
+          color: buttonColor,
+          onPressed: (){
+            playNotes(noteNumber);
+          },
+        ),
+      ),
+    );
+  }
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -27,7 +45,7 @@ class XylophoneApp extends StatelessWidget {
                       fontSize: 60.0,
                     ),),
                     Text(
-                      "Press the colored buttons below the way you like.",
+                      "Press the colored buttons below and enjoy.",
                       style: TextStyle(
                         color: Colors.white,
                         fontFamily: 'Ubuntu',
@@ -43,83 +61,13 @@ class XylophoneApp extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.all(5.0),
-                        child: RaisedButton(
-                          color: Colors.red,
-                          onPressed: (){
-                            playNotes(1);
-                          },
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.all(5.0),
-                        child: RaisedButton(
-                          color: Colors.orange,
-                          onPressed: (){
-                            playNotes(2);
-                          },
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.all(5.0),
-                        child: RaisedButton(
-                          color: Colors.yellow,
-                          onPressed: (){
-                            playNotes(3);
-                          },
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.all(5.0),
-                        child: RaisedButton(
-                        color: Colors.green,
-                        onPressed: (){
-                          playNotes(4);
-                        },
-                    ),
-                      ),),
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.all(5.0),
-                        child: RaisedButton(
-                          color: Colors.teal,
-                          onPressed: (){
-                            playNotes(5);
-                          },
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                      child:
-                      Padding(
-                        padding: const EdgeInsets.all(5.0),
-                        child: RaisedButton(
-                        color: Colors.blue,
-                        onPressed: (){
-                          playNotes(6);
-                        },
-                    ),
-                      ),
-                    ),
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.all(5.0),
-                        child: RaisedButton(
-                          color: Colors.purple,
-                          onPressed: (){
-                            playNotes(7);
-                          },
-                        ),
-                      ),
-                    ),
+                    buildKey(Colors.red, 1),
+                    buildKey(Colors.orange, 2),
+                    buildKey(Colors.yellow, 3),
+                    buildKey(Colors.green, 4),
+                    buildKey(Colors.teal, 5),
+                    buildKey(Colors.blue, 6),
+                    buildKey(Colors.purple, 7),
                   ],
                 ),
               ),
@@ -129,8 +77,5 @@ class XylophoneApp extends StatelessWidget {
       ),
     );
   }
-  void playNotes(int noteNumber) {
-    final player = new AudioCache();
-    player.play('note$noteNumber.wav');
-  }
+
 }
